@@ -6,7 +6,7 @@ import './styles/global.css';
 
 function App() {
   return (
-    <Router basename="/blog-platform"> {/* Configure basename for GitHub Pages */}
+    <Router basename="/blog-platform"> {/* Set basename for GitHub Pages */}
       <Routes>
         {/* Blog List Route */}
         <Route path="/" element={<BlogList />} />
