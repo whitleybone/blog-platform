@@ -1,0 +1,92 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
+  font-family: 'Playfair Display', serif; /* Elegant serif for headings */
+  font-family: 'Inter', sans-serif; /* Clean sans-serif for body text */
+  background-color: #f7e8d0; /* Sand background */
+  color: #333; /* Charcoal text */
+  line-height: 1.8;
+}
+
+#root {
+  border: 20px solid transparent; /* Adjust border size */
+  padding: 20px;
+  border-image: url('https://media.istockphoto.com/id/1265297347/vector/seamless-wavy-pattern.jpg?s=612x612&w=0&k=20&c=2zUzXz1wKTPxjQCC1m3_tKnDbrJBoyCJ8vzeH680V58=') 30 round; /* Set the border image */
+  border-image-width: 30px;
+  border-radius: 50px;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  color: #8e6c5e; /* Muted brown */
+  border-bottom: 1px solid transparent;
+  transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+a:hover {
+  color: #b47c55; /* Darker terracotta on hover */
+  border-bottom: 1px solid #b47c55;
+}
+
+/* Buttons */
+button {
+  font-family: 'Inter', sans-serif;
+  padding: 0.75rem 1.5rem;
+  color: #fff;
+  background-color: #d4a373;
+  border: none;
+  border-radius: 40px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+  background-color: #b47c55;
+  transform: translateY(-3px);
+}
+
+/* Containers */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+/* Cards */
+.card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.15);
+}
