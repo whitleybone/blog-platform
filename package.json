@@ -11,7 +11,7 @@
     "styled-components": "^6.1.14",
     "web-vitals": "^4.2.4"
   },
-"homepage": "https://whitleybone.github.io/<repository-name>",
+"homepage": "https://whitleybone.github.io/blog-platform",
 "scripts": {
   "start": "react-scripts start",
   "build": "react-scripts build",
