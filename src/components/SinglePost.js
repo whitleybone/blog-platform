@@ -1,69 +1,71 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom'; // Add Link here
 import styled from 'styled-components';
 
 // Styled Components
-const PostContainer = styled.div`
-  max-width: 800px;
-  margin: 3rem auto;
+const Container = styled.div`
+  max-width: 900px; /* Narrow the blog width */
+  margin: 0 auto;
   padding: 2rem;
-  background: #f7e8d0; /* Sand-colored background */
-  border-radius: 20px; /* Softer edges */
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #f7e8d0; /* Sand background */
+  min-height: 100vh;
 `;
 
-const PostTitle = styled.h1`
-  font-family: 'Playfair Display', serif; /* Elegant serif font */
-  font-size: 2.5rem;
-  color: #333; /* Charcoal text */
-  margin-bottom: 1rem;
+const Title = styled.h1`
+  font-family: 'Playfair Display', serif;
   text-align: center;
+  font-size: 3rem; /* Adjusted title size */
+  color: #4D2D18; /* Charcoal text */
+  margin-top: 1rem; /* Added margin to space title from image */
+  margin-bottom: 3rem;
 `;
 
-const PostMeta = styled.div`
+const CardImage = styled.img`
+  width: 100%; /* Ensure image takes the full width */
+  height: 250px; /* Set the height for the image */
+  object-fit: cover; /* Make sure the image covers the area */
+  border-radius: 20px; /* Round all the edges of the image */
+  margin-bottom: 2rem; /* Space below the image */
+`;
+
+const CardContent = styled.div`
+  padding: 1.5rem;
+`;
+
+const CardBody = styled.p`
   font-family: 'Inter', sans-serif;
-  font-size: 0.9rem;
-  color: #8e6c5e; /* Muted brown */
-  text-align: center;
-  margin-bottom: 2rem;
+  font-size: 1rem;
+  color: #6c757d; /* Muted gray for the body */
+  line-height: 1.6;
 `;
 
-const PostContent = styled.div`
-  font-family: 'Inter', sans-serif;
-  font-size: 1.125rem;
-  color: #333; /* Charcoal for text */
-  line-height: 1.8;
-  text-align: justify; /* Neat justification */
-`;
-
-const BackButton = styled.a`
+const BackLink = styled(Link)`
   display: inline-block;
-  margin-top: 2rem;
-  padding: 0.75rem 1.5rem;
-  font-size: 0.875rem;
   font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: bold;
+  text-transform: uppercase;
   color: #fff;
   background-color: #d4a373; /* Terracotta button */
-  border: none;
+  padding: 0.5rem 1rem;
   border-radius: 40px; /* Pill-shaped button */
   text-decoration: none;
-  text-transform: uppercase;
   transition: background-color 0.3s ease, transform 0.3s ease;
 
   &:hover {
-    background-color: #b47c55; /* Darker terracotta on hover */
+    background-color: #b47c55; /* Darker terracotta hover effect */
     transform: translateY(-3px);
   }
 `;
 
 const SinglePost = () => {
-  const { id } = useParams();
+  const { id } = useParams(); // To get the 'id' from the URL
   const [post, setPost] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(`${process.env.PUBLIC_URL}/posts.json`)  // Use process.env.PUBLIC_URL for correct path
+    // Fetching posts.json and finding the single post based on the ID
+    fetch(`${process.env.PUBLIC_URL}/posts.json`)
       .then((response) => {
         if (!response.ok) throw new Error('Failed to fetch posts');
         return response.json();
@@ -76,18 +78,23 @@ const SinglePost = () => {
       .catch((error) => setError(error.message));
   }, [id]);
 
-  if (error) return <p style={{ textAlign: 'center', color: 'red' }}>{error}</p>;
-  if (!post) return <p style={{ textAlign: 'center' }}>Loading...</p>;
+  if (error) {
+    return <Container><Title>{error}</Title></Container>;
+  }
+
+  if (!post) {
+    return <Container><Title>Loading...</Title></Container>;
+  }
 
   return (
-    <PostContainer>
-      <PostTitle>{post.title}</PostTitle>
-      <PostMeta>
-        By {post.author} on {post.date}
-      </PostMeta>
-      <PostContent>{post.content}</PostContent>
-      <BackButton href="/">← Back to Blog List</BackButton>
-    </PostContainer>
+    <Container>
+      <CardImage src={post.image || 'https://via.placeholder.com/400'} alt={post.title} />
+      <Title>{post.title}</Title>
+      <CardContent>
+        <CardBody>{post.content}</CardBody>
+      </CardContent>
+      <BackLink to="/">Back to Blog List</BackLink>
+    </Container>
   );
 };
 

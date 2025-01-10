@@ -92,18 +92,25 @@ const ReadMore = styled(Link)`
 // BlogList Component
 const BlogList = () => {
   const [posts, setPosts] = useState([]);
+  const [error, setError] = useState(null); // Add error state
 
   useEffect(() => {
     fetch(`${process.env.PUBLIC_URL}/posts.json`)
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    return response.json();
-  })
-  .then((data) => setPosts(data))
-  .catch((error) => console.error('Error fetching posts:', error));
+      .then((response) => {
+        if (!response.ok) throw new Error('Failed to fetch posts');
+        return response.json();
+      })
+      .then((data) => setPosts(data)) // Set posts directly from the fetched data
+      .catch((error) => setError(error.message)); // Set error state
   }, []);
+
+  if (error) {
+    return (
+      <Container>
+        <Title>Error: {error}</Title>
+      </Container>
+    );
+  }
 
   return (
     <Container>
