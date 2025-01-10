@@ -10,22 +10,14 @@ const PostContainer = styled.div`
   background: #f7e8d0; /* Sand-colored background */
   border-radius: 20px; /* Softer edges */
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-`;
-
-const CoverImage = styled.div`
-  height: 300px;
-  background-size: cover;
-  background-position: center;
-  background-image: url('https://via.placeholder.com/800'); /* Default fallback */
-  border-radius: 20px;
-  margin-bottom: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 `;
 
 const PostTitle = styled.h1`
-  font-family: 'Playfair Display', serif;
+  font-family: 'Playfair Display', serif; /* Elegant serif font */
   font-size: 2.5rem;
   color: #333; /* Charcoal text */
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   text-align: center;
 `;
 
@@ -42,7 +34,7 @@ const PostContent = styled.div`
   font-size: 1.125rem;
   color: #333; /* Charcoal for text */
   line-height: 1.8;
-  text-align: justify; /* Neat justification for text */
+  text-align: justify; /* Neat justification */
 `;
 
 const BackButton = styled.a`
@@ -51,12 +43,12 @@ const BackButton = styled.a`
   padding: 0.75rem 1.5rem;
   font-size: 0.875rem;
   font-family: 'Inter', sans-serif;
-  text-transform: uppercase;
   color: #fff;
   background-color: #d4a373; /* Terracotta button */
   border: none;
   border-radius: 40px; /* Pill-shaped button */
   text-decoration: none;
+  text-transform: uppercase;
   transition: background-color 0.3s ease, transform 0.3s ease;
 
   &:hover {
@@ -66,12 +58,12 @@ const BackButton = styled.a`
 `;
 
 const SinglePost = () => {
-  const { id } = useParams(); // Get the post ID from the URL
+  const { id } = useParams();
   const [post, setPost] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('/posts.json')
+    fetch(`${process.env.PUBLIC_URL}/posts.json`)  // Use process.env.PUBLIC_URL for correct path
       .then((response) => {
         if (!response.ok) throw new Error('Failed to fetch posts');
         return response.json();
@@ -89,21 +81,11 @@ const SinglePost = () => {
 
   return (
     <PostContainer>
-      {/* Cover Image */}
-      <CoverImage style={{ backgroundImage: `url(${post.image})` }} />
-      
-      {/* Title */}
       <PostTitle>{post.title}</PostTitle>
-      
-      {/* Metadata */}
       <PostMeta>
-        By {post.author || 'Unknown Author'} on {post.date || 'Unknown Date'}
+        By {post.author} on {post.date}
       </PostMeta>
-      
-      {/* Content */}
-      <PostContent>{post.content || 'No content available.'}</PostContent>
-      
-      {/* Back Button */}
+      <PostContent>{post.content}</PostContent>
       <BackButton href="/">← Back to Blog List</BackButton>
     </PostContainer>
   );
