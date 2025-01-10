@@ -94,13 +94,15 @@ const BlogList = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    fetch('/posts.json') // Ensure posts.json is in the public folder
-      .then((response) => {
-        if (!response.ok) throw new Error('Failed to fetch posts');
-        return response.json();
-      })
-      .then((data) => setPosts(data))
-      .catch((error) => console.error('Error fetching posts:', error));
+    fetch(`${process.env.PUBLIC_URL}/posts.json`)
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then((data) => setPosts(data))
+  .catch((error) => console.error('Error fetching posts:', error));
   }, []);
 
   return (
