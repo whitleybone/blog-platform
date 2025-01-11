@@ -1,0 +1,30 @@
+.quote-container {
+    width: 100%;
+    overflow: hidden;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fdf7f0; /* Light boho background */
+    color: #4a403a; /* Earthy text color */
+    font-family: "Georgia", serif;
+    font-size: 18px;
+    border: 2px solid #d1bfa7;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .quote {
+    position: relative; /* Ensure proper positioning */
+    opacity: 1; /* Make sure text is visible */
+    animation: fade-in 1s ease-in-out;
+  }
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
