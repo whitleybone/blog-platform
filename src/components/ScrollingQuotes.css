@@ -1,16 +1,16 @@
 .quote-container {
-    width: 100%;
-    overflow: hidden;
+    width: 70%; /* Make it span the full width of the parent container */
+    margin: 10px 0 0px 200px; /* Center horizontally within its parent */
     height: 50px;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #fdf7f0; /* Light boho background */
-    color: #4a403a; /* Earthy text color */
+    align-items: center; /* Vertically center the quote */
+    justify-content: center; /* Horizontally center the quote */
+    background-color: #fdf7f0; /* Light mode background */
+    color: #4a403a; /* Light mode text color */
     font-family: "Georgia", serif;
     font-size: 18px;
-    border: 2px solid #d1bfa7;
-    border-radius: 5px;
+    border: 1px solid #d1bfa7;
+    border-radius: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   
@@ -27,4 +27,16 @@
     to {
       opacity: 1;
     }
+  }
+
+  /* Default Light Mode */
+.quote-container {
+    background-color: #fdf7f0;
+    color: #4a403a;
+  }
+  
+  /* Dark Mode Overrides */
+  .app-container.dark .quote-container {
+    background-color: #3e3e3e;
+    color: #e0e0e0;
   }
