@@ -60,6 +60,13 @@ button:hover {
   padding: 2rem;
 }
 
+@media (max-width: 768px) {
+  .container {
+    max-width: 100%; /* Full width on mobile */
+    padding: 1rem; /* Reduced padding */
+  }
+}
+
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Playfair Display', serif;
@@ -70,53 +77,123 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 2.5rem; /* Default size for larger screens */
 }
 
-h2 {
-  font-size: 2rem;
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.5rem; /* Smaller size for mobile screens */
+    line-height: 1.2; /* Adjust line height for readability */
+  }
 }
 
-/* Cards */
+/* BlogGrid Adjustments */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Default grid layout */
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .blog-grid {
+    grid-template-columns: 1fr; /* Single column for smaller screens */
+    gap: 1rem; /* Reduce spacing between cards */
+  }
+}
+
+/* BlogCard Styling */
 .card {
   background: #ffffff;
-  border-radius: 20px;
-  padding: 2rem;
-  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 20px; /* Rounded edges */
+  padding: 1.5rem; /* Default padding */
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.15); /* Enhance shadow on hover */
+}
+
+@media (max-width: 768px) {
+  .card {
+    padding: 1rem; /* Adjust padding for smaller screens */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Reduce shadow intensity */
+  }
+}
+
+/* BlogCard Text Adjustments */
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.card-title:hover {
+  color: #b47c55; /* Terracotta hover effect */
+}
+
+@media (max-width: 768px) {
+  .card-title {
+    font-size: 1.25rem; /* Smaller size for smaller screens */
+  }
+}
+
+.card-excerpt {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: #6c757d;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .card-excerpt {
+    font-size: 0.875rem; /* Smaller text size for mobile */
+    margin-bottom: 1rem; /* Adjust spacing */
+  }
+}
+
+/* Read More Button */
+.read-more {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: #d4a373;
+  padding: 0.5rem 1rem;
+  border-radius: 40px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.read-more:hover {
+  background-color: #b47c55;
+  transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+  .read-more {
+    font-size: 0.75rem; /* Adjust button size */
+    padding: 0.5rem 0.75rem; /* Adjust padding */
+  }
 }
 
 /* Light Mode */
 .app-container.light {
-  background-color: #f7e7cf; /* Light background */
-  color: #4a403a; /* Dark text */
+  background-color: #f7e7cf;
+  color: #4a403a;
 }
 
 /* Dark Mode */
 .app-container.dark {
-  background-color: #2c2c2c; /* Dark background */
-  color: #f1f1f1; /* Light text */
-  border: white; /* Remove border */
-}
-
-/* Light Mode Header */
-.app-container.light header {
-  background-color: #f7e7cf; /* Light header background */
-  color: #4a403a; /* Dark header text */
-  border-bottom: 2px solid #d1bfa7; /* Subtle border */
-}
-
-/* Dark Mode Header */
-.app-container.dark header {
-  background-color: #3e3e3e; /* Dark header background */
-  color: #f1f1f1; /* Light header text */
-  border-bottom: 2px solid #555; /* Subtle border for dark mode */
-  text-decoration-color: white;
+  background-color: #2c2c2c;
+  color: #f1f1f1;
 }
 
 /* Header Styling */
@@ -125,44 +202,77 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: background-color 0.3s, color 0.3s; /* Smooth transitions */
-}
-
-/* Button Styling */
-button {
-  padding: 10px 15px;
-  margin: 10px;
-  background-color: #d1bfa7; /* Neutral button background */
-  color: #4a403a; /* Button text */
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s, color 0.3s; /* Smooth transitions */
-}
-
-button:hover {
-  background-color: #c4a98f; /* Slightly darker on hover */
-}
-
-/* Quotes Specific Styling for Dark Mode */
-.app-container.dark .quote-container {
-  background-color: #3e3e3e; /* Dark quote container background */
-  color: #e0e0e0; /* Light text for quotes */
-  border: 1px solid #555; /* Add subtle border for dark mode */
-}
-
-/* Transition for smooth mode switching */
-.app-container {
   transition: background-color 0.3s, color 0.3s;
 }
 
-/* Light Mode Header Text */
-.app-container.light header h1 {
-  color: #4a403a; /* Dark text for light mode */
+header h1 {
+  font-size: 2rem;
+  color: #4a403a; /* Default for light mode */
+  transition: color 0.3s ease;
 }
 
-/* Dark Mode Header Text */
 .app-container.dark header h1 {
-  color: #ffffff; /* Bright white text for dark mode */
+  color: #ffffff; /* Bright white for dark mode */
+}
+
+header button {
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  header h1 {
+    margin-bottom: 1rem;
+  }
+
+  header button {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Scrolling Quotes */
+.quote-container {
+  width: 90%;
+  margin: 10px auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fdf7f0;
+  color: #4a403a;
+  font-family: "Georgia", serif;
+  font-size: 16px;
+  padding: 1rem;
+  border: 1px solid #d1bfa7;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+  .quote-container {
+    font-size: 14px;
+    padding: 0.5rem;
+    line-height: 1.5;
+  }
+}
+
+.app-container.dark .quote-container {
+  background-color: #3e3e3e;
+  color: #e0e0e0;
+  border: 1px solid #555;
+}
+
+/* Smooth Mode Switching */
+.app-container {
+  transition: background-color 0.3s, color 0.3s;
 }

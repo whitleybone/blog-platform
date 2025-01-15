@@ -14,19 +14,17 @@ const App = () => {
 
   return (
     <Router basename="/blog-platform">
-      {/* Add the theme class to the main container */}
       <div className={`app-container ${theme}`}>
         <header>
           <h1>Aura & Artisan</h1>
-          {/* Dark mode toggle button */}
           <button onClick={toggleTheme}>
             {theme === 'light' ? 'Dark Mode' : 'Light Mode'}
           </button>
         </header>
-        <ScrollingQuotes />
+        <ScrollingQuotes theme={theme} />
         <Routes>
-          <Route path="/" element={<BlogList />} />
-          <Route path="/post/:id" element={<SinglePost />} />
+          <Route path="/" element={<BlogList theme={theme} />} />
+          <Route path="/post/:id" element={<SinglePost theme={theme} />} />
         </Routes>
       </div>
     </Router>

@@ -1,42 +1,47 @@
+/* Scrolling Quotes Container */
 .quote-container {
-    width: 70%; /* Make it span the full width of the parent container */
-    margin: 10px 0 0px 200px; /* Center horizontally within its parent */
-    height: 50px;
-    display: flex;
-    align-items: center; /* Vertically center the quote */
-    justify-content: center; /* Horizontally center the quote */
-    background-color: #fdf7f0; /* Light mode background */
-    color: #4a403a; /* Light mode text color */
-    font-family: "Georgia", serif;
-    font-size: 18px;
-    border: 1px solid #d1bfa7;
-    border-radius: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .quote {
-    position: relative; /* Ensure proper positioning */
-    opacity: 1; /* Make sure text is visible */
-    animation: fade-in 1s ease-in-out;
-  }
-  
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
+  width: 90%;
+  margin: 10px auto;
+  height: auto; /* Allow height to expand */
+  display: flex;
+  align-items: center; /* Vertically center the quote */
+  justify-content: center; /* Horizontally center the quote */
+  background-color: #fdf7f0; /* Default light mode background */
+  color: #4a403a; /* Light mode text color */
+  font-family: "Georgia", serif;
+  font-size: 18px; /* Default font size */
+  padding: 1rem; /* Add padding for better spacing */
+  border: 1px solid #d1bfa7; /* Subtle border */
+  border-radius: 20px; /* Rounded edges */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  text-align: center; /* Center-align text */
+  white-space: normal; /* Allow text wrapping */
+  overflow-wrap: break-word; /* Break long words */
+  transition: all 0.3s ease; /* Smooth transitions for theme changes */
+}
 
-  /* Default Light Mode */
-.quote-container {
-    background-color: #fdf7f0;
-    color: #4a403a;
+/* Animation for Quotes */
+.quote {
+  position: relative; /* Ensure proper positioning */
+  opacity: 1; /* Make sure text is visible */
+  animation: fade-in 1s ease-in-out; /* Fade-in effect */
+}
+
+/* Fade-in Keyframes */
+@keyframes fade-in {
+  from {
+    opacity: 0;
   }
-  
-  /* Dark Mode Overrides */
-  .app-container.dark .quote-container {
-    background-color: #3e3e3e;
-    color: #e0e0e0;
+  to {
+    opacity: 1;
   }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .quote-container {
+    font-size: 14px; /* Smaller font for smaller screens */
+    padding: 1rem; /* Ensure enough padding for readability */
+    line-height: 1.5; /* Add spacing between lines for clarity */
+  }
+}
